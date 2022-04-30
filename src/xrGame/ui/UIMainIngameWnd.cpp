@@ -134,6 +134,8 @@ void CUIMainIngameWnd::Init()
     m_ind_bleeding = UIHelper::CreateStatic(uiXml, "indicator_bleeding", this, false);
     m_ind_radiation = UIHelper::CreateStatic(uiXml, "indicator_radiation", this, false);
     m_ind_starvation = UIHelper::CreateStatic(uiXml, "indicator_starvation", this, false);
+    //Thirst Simulator
+    m_ind_thirst = UIHelper::CreateStatic(uiXml, "indicator_thirst", this, false);
     m_ind_weapon_broken = UIHelper::CreateStatic(uiXml, "indicator_weapon_broken", this, false);
     m_ind_helmet_broken = UIHelper::CreateStatic(uiXml, "indicator_helmet_broken", this, false);
     m_ind_outfit_broken = UIHelper::CreateStatic(uiXml, "indicator_outfit_broken", this, false);
@@ -725,6 +727,28 @@ void CUIMainIngameWnd::UpdateMainIndicators()
                 m_ind_starvation->InitTexture("ui_inGame2_circle_hunger_yellow");
             else
                 m_ind_starvation->InitTexture("ui_inGame2_circle_hunger_red");
+        }
+    }
+
+    //Thirst Simulator
+    // Thirst icon
+    if (m_ind_thirst)
+    {
+        const float thirst = pActor->conditions().GetThirst();
+        const float thirst_critical = pActor->conditions().ThirstCritical();
+        const float thirst_koef =
+            (thirst_critical - thirst) / (thirst >= thirst_critical ? 1 - thirst_critical : thirst_critical);
+        if (thirst_koef > 0.5)
+            m_ind_thirst->Show(false);
+        else
+        {
+            m_ind_thirst->Show(true);
+            if (thirst_koef > 0.0f)
+                m_ind_thirst->InitTexture("ui_inGame2_circle_thirst_green");
+            else if (thirst_koef > -0.5f)
+                m_ind_thirst->InitTexture("ui_inGame2_circle_thirst_yellow");
+            else
+                m_ind_thirst->InitTexture("ui_inGame2_circle_thirst_red");
         }
     }
 

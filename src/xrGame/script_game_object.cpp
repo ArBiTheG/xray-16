@@ -82,6 +82,8 @@ BIND_FUNCTION10(&object(), CScriptGameObject::GetHealth, CEntityAlive, condition
 BIND_FUNCTION10(&object(), CScriptGameObject::GetPsyHealth, CEntityAlive, conditions().GetPsyHealth, float, -1);
 BIND_FUNCTION10(&object(), CScriptGameObject::GetPower, CEntityAlive, conditions().GetPower, float, -1);
 BIND_FUNCTION10(&object(), CScriptGameObject::GetSatiety, CEntityAlive, conditions().GetSatiety, float, -1);
+// Thirst Simulator
+BIND_FUNCTION10(&object(), CScriptGameObject::GetThirst, CEntityAlive, conditions().GetThirst, float, -1);
 BIND_FUNCTION10(&object(), CScriptGameObject::GetRadiation, CEntityAlive, conditions().GetRadiation, float, -1);
 BIND_FUNCTION10(&object(), CScriptGameObject::GetBleeding, CEntityAlive, conditions().BleedingSpeed, float, -1);
 BIND_FUNCTION10(&object(), CScriptGameObject::GetMorale, CEntityAlive, conditions().GetEntityMorale, float, -1);
@@ -89,6 +91,8 @@ BIND_FUNCTION01(&object(), CScriptGameObject::SetHealth, CEntityAlive, condition
 BIND_FUNCTION01(&object(), CScriptGameObject::SetPsyHealth, CEntityAlive, conditions().ChangePsyHealth, float, float);
 BIND_FUNCTION01(&object(), CScriptGameObject::SetPower, CEntityAlive, conditions().ChangePower, float, float);
 BIND_FUNCTION01(&object(), CScriptGameObject::ChangeSatiety, CEntityAlive, conditions().ChangeSatiety, float, float);
+// Thirst Simulator
+BIND_FUNCTION01(&object(), CScriptGameObject::ChangeThirst, CEntityAlive, conditions().ChangeThirst, float, float);
 BIND_FUNCTION01(&object(), CScriptGameObject::SetRadiation, CEntityAlive, conditions().ChangeRadiation, float, float);
 BIND_FUNCTION01(&object(), CScriptGameObject::SetBleeding, CEntityAlive, conditions().ChangeBleeding, float, float);
 BIND_FUNCTION01(

@@ -18,6 +18,8 @@ public:
 protected:
     UIBoosterInfoItem* m_booster_items[eBoostExplImmunity];
     UIBoosterInfoItem* m_booster_satiety;
+    //Thirst Simulator
+    UIBoosterInfoItem* m_booster_thirst;
     UIBoosterInfoItem* m_booster_anabiotic;
     UIBoosterInfoItem* m_booster_time;
 

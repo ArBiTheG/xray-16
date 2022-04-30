@@ -205,6 +205,8 @@ public:
     _DECLARE_FUNCTION10(GetPower, float);
     _DECLARE_FUNCTION10(GetRadiation, float);
     _DECLARE_FUNCTION10(GetSatiety, float);
+    // Thirst Simulator
+    _DECLARE_FUNCTION10(GetThirst, float);
     _DECLARE_FUNCTION10(GetBleeding, float);
     _DECLARE_FUNCTION10(GetMorale, float);
 
@@ -212,6 +214,8 @@ public:
     _DECLARE_FUNCTION11(SetPsyHealth, void, float);
     _DECLARE_FUNCTION11(SetPower, void, float);
     _DECLARE_FUNCTION11(ChangeSatiety, void, float);
+    // Thirst Simulator
+    _DECLARE_FUNCTION11(ChangeThirst, void, float);
     _DECLARE_FUNCTION11(SetRadiation, void, float);
     _DECLARE_FUNCTION11(SetBleeding, void, float);
     _DECLARE_FUNCTION11(SetCircumspection, void, float);
@@ -849,12 +853,16 @@ public:
     float GetArtefactHealthRestoreSpeed();
     float GetArtefactRadiationRestoreSpeed();
     float GetArtefactSatietyRestoreSpeed();
+    //Thirst Simulator
+    float GetArtefactThirstRestoreSpeed();
     float GetArtefactPowerRestoreSpeed();
     float GetArtefactBleedingRestoreSpeed();
 
     void SetArtefactHealthRestoreSpeed(float value);
     void SetArtefactRadiationRestoreSpeed(float value);
     void SetArtefactSatietyRestoreSpeed(float value);
+    //Thirst Simulator
+    void SetArtefactThirstRestoreSpeed(float value);
     void SetArtefactPowerRestoreSpeed(float value);
     void SetArtefactBleedingRestoreSpeed(float value);
 

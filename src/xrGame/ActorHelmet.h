@@ -37,6 +37,8 @@ public:
     float m_fHealthRestoreSpeed;
     float m_fRadiationRestoreSpeed;
     float m_fSatietyRestoreSpeed;
+    // Thirst Simulator
+    float m_fThirstRestoreSpeed;
     float m_fPowerRestoreSpeed;
     float m_fBleedingRestoreSpeed;
 

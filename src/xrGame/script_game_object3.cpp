@@ -1275,6 +1275,15 @@ float CScriptGameObject::GetArtefactSatietyRestoreSpeed()
     return artefact->GetSatietyPower();
 }
 
+//Thirst Simulator
+float CScriptGameObject::GetArtefactThirstRestoreSpeed()
+{
+    CArtefact* artefact = smart_cast<CArtefact*>(&object());
+    THROW(artefact);
+
+    return artefact->GetThirstPower();
+}
+
 float CScriptGameObject::GetArtefactPowerRestoreSpeed()
 {
     CArtefact* artefact = smart_cast<CArtefact*>(&object());
@@ -1313,6 +1322,15 @@ void CScriptGameObject::SetArtefactSatietyRestoreSpeed(float value)
     THROW(artefact);
 
     artefact->SetSatietyPower(value);
+}
+
+//Thirst Simulator
+void CScriptGameObject::SetArtefactThirstRestoreSpeed(float value)
+{
+    CArtefact* artefact = smart_cast<CArtefact*>(&object());
+    THROW(artefact);
+
+    artefact->SetThirstPower(value);
 }
 
 void CScriptGameObject::SetArtefactPowerRestoreSpeed(float value)
