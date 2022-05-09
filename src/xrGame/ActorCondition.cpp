@@ -584,10 +584,12 @@ void CActorCondition::load(IReader& input_packet)
     load_data(m_fAlcohol, input_packet);
     load_data(m_condition_flags, input_packet);
     load_data(m_fSatiety, input_packet);
+    load_data(m_fThirst, input_packet);
 
     load_data(m_curr_medicine_influence.fHealth, input_packet);
     load_data(m_curr_medicine_influence.fPower, input_packet);
     load_data(m_curr_medicine_influence.fSatiety, input_packet);
+    load_data(m_curr_medicine_influence.fThirst, input_packet);
     load_data(m_curr_medicine_influence.fRadiation, input_packet);
     load_data(m_curr_medicine_influence.fWoundsHeal, input_packet);
     load_data(m_curr_medicine_influence.fMaxPowerUp, input_packet);
