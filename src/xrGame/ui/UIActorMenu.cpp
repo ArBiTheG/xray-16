@@ -314,7 +314,11 @@ EDDListType CUIActorMenu::GetListType(CUIDragDropListEx* l)
         return iActorBag;
     if (l == m_pLists[eInventoryBeltList])
         return iActorBelt;
-
+    
+    if (l == m_pLists[eInventoryKnifeList])
+        return iActorSlot;
+    if (l == m_pLists[eInventoryBinocularList])
+        return iActorSlot;
     if (l == m_pLists[eInventoryAutomaticList])
         return iActorSlot;
     if (l == m_pLists[eInventoryPistolList])
@@ -525,6 +529,9 @@ void CUIActorMenu::UpdateItemsPlace()
 
 void CUIActorMenu::clear_highlight_lists()
 {
+    m_pLists[eInventoryKnifeList]->Highlight(false);
+    m_pLists[eInventoryBinocularList]->Highlight(false);
+
     m_pLists[eInventoryPistolList]->Highlight(false);
     m_pLists[eInventoryAutomaticList]->Highlight(false);
     if (m_pLists[eInventoryHelmetList])
@@ -572,6 +579,16 @@ void CUIActorMenu::highlight_item_slot(CUICellItem* cell_item)
     CArtefact* artefact = smart_cast<CArtefact*>(item);
 
     u16 slot_id = item->BaseSlot();
+    if (weapon && (slot_id == KNIFE_SLOT))
+    {
+        m_pLists[eInventoryKnifeList]->Highlight(true);
+        return;
+    }
+    if (weapon && (slot_id == BINOCULAR_SLOT))
+    {
+        m_pLists[eInventoryBinocularList]->Highlight(true);
+        return;
+    }
     if (weapon && (slot_id == INV_SLOT_2 || slot_id == INV_SLOT_3))
     {
         m_pLists[eInventoryPistolList]->Highlight(true);
@@ -862,6 +879,8 @@ void CUIActorMenu::ClearAllLists()
         m_pLists[eInventoryHelmetList]->ClearAll(true);
     if (m_pLists[eInventoryDetectorList])
         m_pLists[eInventoryDetectorList]->ClearAll(true);
+    m_pLists[eInventoryKnifeList]->ClearAll(true);
+    m_pLists[eInventoryBinocularList]->ClearAll(true);
     m_pLists[eInventoryPistolList]->ClearAll(true);
     m_pLists[eInventoryAutomaticList]->ClearAll(true);
     if (m_pQuickSlot)
