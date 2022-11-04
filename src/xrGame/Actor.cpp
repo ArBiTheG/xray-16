@@ -2100,6 +2100,7 @@ float CActor::GetRestoreSpeed(ALife::EConditionRestoreType const& type)
     }
     case ALife::eSatietyRestoreSpeed:
     {
+
         res = conditions().V_Satiety();
 
         for (auto& it : inventory().m_belt)

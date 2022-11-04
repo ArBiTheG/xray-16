@@ -47,6 +47,8 @@ void CUIActorMenu::InitInventoryMode()
     ShowIfExist(m_pLists[eInventoryDetectorList], true);
     m_pLists[eInventoryKnifeList]->Show(true);
     m_pLists[eInventoryBinocularList]->Show(true);
+    m_pLists[eInventoryPDAList]->Show(true);
+    m_pLists[eInventoryTorchList]->Show(true);
     m_pLists[eInventoryPistolList]->Show(true);
     m_pLists[eInventoryAutomaticList]->Show(true);
     ShowIfExist(m_pQuickSlot, true);
@@ -238,8 +240,8 @@ void CUIActorMenu::OnInventoryAction(PIItem pItem, u16 action_type)
     CUIDragDropListEx* all_lists[] =
     {
         m_pLists[eInventoryBeltList], m_pLists[eInventoryKnifeList], m_pLists[eInventoryBinocularList], m_pLists[eInventoryPistolList], m_pLists[eInventoryAutomaticList],
-        m_pLists[eInventoryOutfitList], m_pLists[eInventoryHelmetList], m_pLists[eInventoryDetectorList], m_pLists[eInventoryBagList],
-        m_pLists[eTradeActorBagList], m_pLists[eTradeActorList]
+        m_pLists[eInventoryPDAList], m_pLists[eInventoryTorchList], m_pLists[eInventoryOutfitList], m_pLists[eInventoryHelmetList], 
+        m_pLists[eInventoryDetectorList], m_pLists[eInventoryBagList], m_pLists[eTradeActorBagList], m_pLists[eTradeActorList]
     };
 
     switch (action_type)
@@ -747,8 +749,8 @@ CUIDragDropListEx* CUIActorMenu::GetSlotList(u16 slot_idx)
 
     case DETECTOR_SLOT: return m_pLists[eInventoryDetectorList]; break;
 
-    case PDA_SLOT:
-    case TORCH_SLOT:
+    case PDA_SLOT: return m_pLists[eInventoryPDAList]; break;
+    case TORCH_SLOT: return m_pLists[eInventoryTorchList]; break;
     case ARTEFACT_SLOT:
     case BINOCULAR_SLOT: return m_pLists[eInventoryBinocularList]; break;
     case KNIFE_SLOT: return m_pLists[eInventoryKnifeList]; break;

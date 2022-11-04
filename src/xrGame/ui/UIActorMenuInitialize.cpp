@@ -190,6 +190,8 @@ void CUIActorMenu::InitializeUniversal(CUIXml& uiXml)
         // { id,                   "xml_section_name",         "condition_indicator,  "highlighter",             "blocker", is_it_critical_and_required }
         { eInventoryKnifeList,     "dragdrop_knife",           "progess_bar_knife",   "inv_knife_highlight",     nullptr,            true },
         { eInventoryBinocularList, "dragdrop_binocular",       nullptr,               "inv_binocular_highlight", nullptr,            true },
+        { eInventoryPDAList,       "dragdrop_pda",             nullptr,               "inv_pda_highlight", nullptr,            true },
+        { eInventoryTorchList,     "dragdrop_torch",           nullptr,               "inv_torch_highlight", nullptr,            true },
         
         { eInventoryPistolList,    "dragdrop_pistol",          "progess_bar_weapon1", "inv_slot2_highlight",     nullptr,            true },
         { eInventoryAutomaticList, "dragdrop_automatic",       "progess_bar_weapon2", "inv_slot3_highlight",     nullptr,            true },
@@ -318,6 +320,8 @@ void CUIActorMenu::InitializeInventoryMode(CUIXml& uiXml)
         // { id,                   "xml_section_name",   parent }
         { eInventoryKnifeList,      "dragdrop_knife",    m_pInventoryWnd },
         { eInventoryBinocularList,  "dragdrop_binocular",    m_pInventoryWnd },
+        { eInventoryPDAList,  "dragdrop_pda",    m_pInventoryWnd },
+        { eInventoryTorchList,  "dragdrop_torch",    m_pInventoryWnd },
 
         { eInventoryPistolList,    "dragdrop_pistol",    m_pInventoryWnd },
         { eInventoryAutomaticList, "dragdrop_automatic", m_pInventoryWnd },
@@ -506,6 +510,9 @@ void CUIActorMenu::InitCallbacks()
     
     BindDragDropListEvents(m_pLists[eInventoryKnifeList]);
     BindDragDropListEvents(m_pLists[eInventoryBinocularList]);
+
+    BindDragDropListEvents(m_pLists[eInventoryPDAList]);
+    BindDragDropListEvents(m_pLists[eInventoryTorchList]);
 
     BindDragDropListEvents(m_pLists[eInventoryPistolList]);
     BindDragDropListEvents(m_pLists[eInventoryAutomaticList]);

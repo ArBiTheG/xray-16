@@ -18,6 +18,8 @@
 #include "GrenadeLauncher.h"
 #include "trade_parameters.h"
 #include "ActorHelmet.h"
+#include "Torch.h"
+#include "Pda.h"
 #include "CustomOutfit.h"
 #include "CustomDetector.h"
 #include "eatable_item.h"
@@ -319,6 +321,10 @@ EDDListType CUIActorMenu::GetListType(CUIDragDropListEx* l)
         return iActorSlot;
     if (l == m_pLists[eInventoryBinocularList])
         return iActorSlot;
+    if (l == m_pLists[eInventoryPDAList])
+        return iActorSlot;
+    if (l == m_pLists[eInventoryTorchList])
+        return iActorSlot;
     if (l == m_pLists[eInventoryAutomaticList])
         return iActorSlot;
     if (l == m_pLists[eInventoryPistolList])
@@ -531,6 +537,8 @@ void CUIActorMenu::clear_highlight_lists()
 {
     m_pLists[eInventoryKnifeList]->Highlight(false);
     m_pLists[eInventoryBinocularList]->Highlight(false);
+    m_pLists[eInventoryPDAList]->Highlight(false);
+    m_pLists[eInventoryTorchList]->Highlight(false);
 
     m_pLists[eInventoryPistolList]->Highlight(false);
     m_pLists[eInventoryAutomaticList]->Highlight(false);
@@ -570,7 +578,9 @@ void CUIActorMenu::highlight_item_slot(CUICellItem* cell_item)
 
     if (CUIDragDropListEx::m_drag_item)
         return;
-
+    
+    CPda* pda = smart_cast<CPda*>(item);
+    CTorch* torch = smart_cast<CTorch*>(item);
     CWeapon* weapon = smart_cast<CWeapon*>(item);
     CHelmet* helmet = smart_cast<CHelmet*>(item);
     CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(item);
@@ -587,6 +597,16 @@ void CUIActorMenu::highlight_item_slot(CUICellItem* cell_item)
     if (weapon && (slot_id == BINOCULAR_SLOT))
     {
         m_pLists[eInventoryBinocularList]->Highlight(true);
+        return;
+    }
+    if (pda && (slot_id == PDA_SLOT))
+    {
+        m_pLists[eInventoryPDAList]->Highlight(true);
+        return;
+    }
+    if (torch && (slot_id == TORCH_SLOT))
+    {
+        m_pLists[eInventoryTorchList]->Highlight(true);
         return;
     }
     if (weapon && (slot_id == INV_SLOT_2 || slot_id == INV_SLOT_3))
@@ -881,6 +901,8 @@ void CUIActorMenu::ClearAllLists()
         m_pLists[eInventoryDetectorList]->ClearAll(true);
     m_pLists[eInventoryKnifeList]->ClearAll(true);
     m_pLists[eInventoryBinocularList]->ClearAll(true);
+    m_pLists[eInventoryPDAList]->ClearAll(true);
+    m_pLists[eInventoryTorchList]->ClearAll(true);
     m_pLists[eInventoryPistolList]->ClearAll(true);
     m_pLists[eInventoryAutomaticList]->ClearAll(true);
     if (m_pQuickSlot)

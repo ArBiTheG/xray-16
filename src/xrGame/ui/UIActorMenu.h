@@ -86,6 +86,8 @@ protected:
     {
         eInventoryKnifeList,
         eInventoryBinocularList,
+        eInventoryPDAList,
+        eInventoryTorchList,
 
         eInventoryPistolList,
         eInventoryAutomaticList,
