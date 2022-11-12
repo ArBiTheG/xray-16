@@ -306,11 +306,14 @@ void CUIMainIngameWnd::Draw()
         return;
 
     UIMotionIcon->SetNoise((s16)(0xffff & iFloor(pActor->m_snd_noise * 100.0f)));
+    if (pActor->GetPDA() != NULL)
+    {
+        UIMotionIcon->Draw();
 
-    UIMotionIcon->Draw();
-
-    UIZoneMap->visible = true;
-    UIZoneMap->Render();
+        UIZoneMap->visible = true;
+        UIZoneMap->Render();
+    }
+    
 
     bool tmp = UIMotionIcon->IsShown();
     UIMotionIcon->Show(false);
@@ -561,6 +564,10 @@ void CUIMainIngameWnd::UpdateFlashingIcons()
 
 void CUIMainIngameWnd::AnimateContacts(bool b_snd)
 {
+    CActor* pActor = smart_cast<CActor*>(Level().CurrentViewEntity());
+    if (pActor->GetPDA() == NULL)
+        return;
+
     UIZoneMap->Counter_ResetClrAnimation();
 
     if (b_snd)
@@ -633,7 +640,11 @@ void CUIMainIngameWnd::reset_ui()
 }
 
 void CUIMainIngameWnd::ShowZoneMap(bool status) { UIZoneMap->visible = status; }
-void CUIMainIngameWnd::DrawZoneMap() { UIZoneMap->Render(); }
+void CUIMainIngameWnd::DrawZoneMap() {
+    CActor* pActor = smart_cast<CActor*>(Level().CurrentViewEntity());
+    if (pActor->GetPDA() != NULL)
+        UIZoneMap->Render();
+}
 void CUIMainIngameWnd::UpdateZoneMap() { UIZoneMap->Update(); }
 void CUIMainIngameWnd::UpdateMainIndicators()
 {
